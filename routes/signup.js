@@ -4,7 +4,7 @@ import {
     handleGithubSignup, 
     handleFacebookSignup, 
     handleGoogleSignup 
-} from "../controller/signupController";
+} from "../controller/signupController.js";
 
 const router = Router();
 

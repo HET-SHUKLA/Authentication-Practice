@@ -1,15 +1,20 @@
 import express from 'express';
 import connect from './connection.js';
 import {MONGO_URL, PORT} from './config.js';
+import {errorHandler} from './middlewares/errorhandling.js';
+import {
+    signup
+} from './routes/index.js';
 
 const app = express();
 
 app.use(express.urlencoded({extended: false}));
+app.use(errorHandler);
 
 //Routes
-app.use('/api/v1/signup', );
-app.use('/api/v1/signin', );
-app.use('/api/v1/logout', );
+app.use('/api/v1/signup', signup);
+// app.use('/api/v1/signin', );
+// app.use('/api/v1/logout', );
 
 connect(MONGO_URL).then(() => {
     app.listen(PORT, () => {
