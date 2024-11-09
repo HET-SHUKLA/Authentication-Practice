@@ -10,7 +10,7 @@ const router = Router();
 
 router.route('/email').post(handleEmailSignup);
 router.route('/facebook').post(handleFacebookSignup);
-router.route('/google').post(handleGoogleSignup);
+router.route('/google').get(handleGoogleSignup);
 router.route('/github').post(handleGithubSignup);
 
 export default router;

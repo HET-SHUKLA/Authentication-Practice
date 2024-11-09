@@ -12,6 +12,13 @@ const COLLECTION_GOOGLE = process.env.COLLECTION_GOOGLE;
 const COLLECTION_GITHUB = process.env.COLLECTION_GITHUB;
 const SALT_ROUND = process.env.SALT_ROUND;
 
+const CLIENT_ID = process.env.CLIENT_ID;
+
+const CLIENT_SECRET = process.env.CLIENT_SECRET;
+
+const REDIRECT_URI = process.env.REDIRECT_URI;
+
+
 export {
     PORT,
     MONGO_URL,
@@ -20,5 +27,8 @@ export {
     COLLECTION_GOOGLE,
     COLLECTION_GITHUB,
     SALT_ROUND,
+    CLIENT_ID,
+    CLIENT_SECRET,
+    REDIRECT_URI,
 }
 

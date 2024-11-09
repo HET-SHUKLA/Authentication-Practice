@@ -7,6 +7,8 @@ import {
     logout,
     signin
 } from './routes/index.js';
+import { handleRedirectGoogle } from "./controller/signupController.js";
+
 
 const app = express();
 
@@ -17,6 +19,7 @@ app.use(errorHandler);
 app.use('/api/v1/signup', signup);
 app.use('/api/v1/signin', signin);
 app.use('/api/v1/logout', logout);
+app.get('/auth/google/secrets', handleRedirectGoogle);
 
 connect(MONGO_URL).then(() => {
     app.listen(PORT, () => {
