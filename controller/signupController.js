@@ -36,7 +36,7 @@ const handleFacebookSignup = (req, res, next) => {
 }
 
 const handleGoogleSignup = (req, res, next) => {
-
+    
 }
 
 const handleGithubSignup = (req, res, next) => {

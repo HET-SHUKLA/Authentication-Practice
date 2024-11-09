@@ -23,7 +23,7 @@ const handleEmailSignin = async (req, res, next) => {
                 return;
             }
 
-            result ? res.status(200).json({msg: 'success'}) : res.status(200).json({msg: 'Password is wrong'})
+            result ? res.status(200).json({msg: 'success'}) : res.status(401).json({msg: 'Password is wrong'})
         });
     }else{
         res.status(404).json({msg: 'User does not exists'});
