@@ -1,4 +1,6 @@
 import {Email} from '../models/EmailSchema.js';
+import bcrypt from 'bcrypt';
+import {SALT_ROUND} from '../config.js';
 
 const storeUserInDB = (collection, obj) => {
 
@@ -6,17 +8,24 @@ const storeUserInDB = (collection, obj) => {
 
 const handleEmailSignup = async (req, res, next) => {
     try{
-        const {email, pass} = req.body;
+        let {email, pass} = req.body;
 
-        const schema = {
-            email: email,
-            password: pass
-        }
+        bcrypt.hash(pass, parseInt(SALT_ROUND), async (err, hash) => {
+            if(err){
+                next(err);
+                return;
+            }
+            const schema = {
+                email: email,
+                password: hash
+            }
+    
+            const docs = new Email(schema);
+            const result = await docs.save();
 
-        const docs = new Email(schema);
-        const result = await docs.save();
-
-        return res.status(201).json({msg: 'success', data: result});
+            return res.status(201).json({msg: 'success', data: result});
+        });
+        
     }catch(e){
         next(e);
     }
